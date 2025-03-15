@@ -16,7 +16,7 @@ dotenv.config({ path: "./config/config.env" });
 // Connect to database
 const { connectDB, syncedDB, disconnectDB } = require("./models/db.config");
 connectDB();
-// syncedDB();
+ syncedDB();
 
 const app = express();
 
@@ -48,7 +48,7 @@ app.use(hpp());
 // Enable CORS
 app.use(
   cors({
-    origin: "http://127.0.0.1:5501",
+    origin: "https://cexbuy.netlify.app",
     credentials: true,
   })
 );
