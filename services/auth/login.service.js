@@ -55,13 +55,14 @@ const login = async (req, res, next) => {
     const token = jwt.sign(
       { id: userExists.id, email: userExists.email },
       process.env.JWT_SECRET,
-      { expiresIn: "2h" }
+      { expiresIn: "5h" }
     );
 
     res.cookie("authToken", token, {
       httpOnly: true,
+      sameSite: "None",
       secure: process.env.NODE_ENV === "production",
-      maxAge: 2 * 60 * 60 * 1000,
+      maxAge: 5 * 60 * 60 * 1000,
     });
 
     return "Login successful!";
